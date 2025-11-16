@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+python-multipart
+pydantic
+
+torch
+numpy
+scipy
+scikit-learn
+matplotlib
+
+tqdm
