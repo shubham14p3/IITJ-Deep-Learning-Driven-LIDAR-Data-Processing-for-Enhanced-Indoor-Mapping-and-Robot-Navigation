@@ -1,62 +1,91 @@
-import { useEffect, useState } from "react";
-import { healthCheck } from "./api";
-import SemanticSegView from "./components/SemanticSegView";
-import MapView from "./components/MapView";
-import RLView from "./components/RLView";
-import BatchView from "./components/BatchView";
-
-function TabButton({ active, onClick, children }) {
+// App.jsx
+export default function App() {
   return (
-    <button
-      onClick={onClick}
+    <div
       style={{
-        padding: "0.4rem 0.8rem",
-        marginRight: "0.5rem",
-        border: "none",
-        borderBottom: active ? "2px solid #1976d2" : "2px solid transparent",
-        background: "none",
-        cursor: "pointer",
+        maxWidth: "900px",
+        margin: "0 auto",
+        paddingTop: "40px",
+        fontFamily: "Poppins, sans-serif",
+        textAlign: "center",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        animation: "fadeIn 1s ease",
       }}
     >
-      {children}
-    </button>
-  );
-}
+      {/* Radar-style image */}
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/854/854894.png"
+        alt="LiDAR Scan"
+        style={{
+          width: "140px",
+          opacity: 0.9,
+          filter: "drop-shadow(0px 4px 8px rgba(0,0,0,0.2))",
+          marginBottom: "20px",
+          animation: "pulse 2s infinite",
+        }}
+      />
 
-export default function App() {
-  const [tab, setTab] = useState("seg");
-  const [backend, setBackend] = useState("Checking...");
+      <h1
+        style={{
+          fontSize: "2rem",
+          fontWeight: 700,
+          color: "#004d40",
+          marginBottom: "12px",
+        }}
+      >
+        Deep Learning LIDAR Indoor Mapping & Navigation
+      </h1>
 
-  useEffect(() => {
-    healthCheck()
-      .then(() => setBackend("Connected"))
-      .catch(() => setBackend("Not reachable"));
-  }, []);
+      <p
+        style={{
+          fontSize: "1.1rem",
+          color: "#555",
+          maxWidth: "600px",
+          lineHeight: "1.6",
+        }}
+      >
+        Use the menu above to explore <br/><b>Segmentation, Mapping, RL Navigation, and Batch Processing.</b>
+      </p>
 
-  return (
-    <div style={{ maxWidth: 900, margin: "1rem auto", fontFamily: "sans-serif" }}>
-      <h1>Deep Learning LIDAR Indoor Mapping & Navigation</h1>
-      <p style={{ fontSize: "0.9rem", color: "#555" }}>Backend: {backend}</p>
-
-      <div style={{ borderBottom: "1px solid #ccc", marginBottom: "1rem" }}>
-        <TabButton active={tab === "seg"} onClick={() => setTab("seg")}>
-          Segmentation
-        </TabButton>
-        <TabButton active={tab === "map"} onClick={() => setTab("map")}>
-          Map
-        </TabButton>
-        <TabButton active={tab === "rl"} onClick={() => setTab("rl")}>
-          RL Navigation
-        </TabButton>
-        <TabButton active={tab === "batch"} onClick={() => setTab("batch")}>
-          Batch
-        </TabButton>
+      {/* Soft glowing card */}
+      <div
+        style={{
+          marginTop: "30px",
+          padding: "25px",
+          borderRadius: "12px",
+          background: "rgba(224,242,241,0.6)",
+          boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
+          backdropFilter: "blur(4px)",
+          maxWidth: "600px",
+        }}
+      >
+        <h2 style={{ color: "#00695c", marginBottom: "10px" }}>
+          System Overview
+        </h2>
+        <p style={{ color: "#333", fontSize: "0.95rem", lineHeight: "1.5" }}>
+          The LIDAR Indoor Mapping System uses cutting-edge machine learning and
+          spatial analysis to build accurate indoor maps, identify obstacles,
+          and navigate autonomously.
+        </p>
       </div>
 
-      {tab === "seg" && <SemanticSegView />}
-      {tab === "map" && <MapView />}
-      {tab === "rl" && <RLView />}
-      {tab === "batch" && <BatchView />}
+      {/* Custom animations */}
+      <style>
+        {`
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+
+          @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.9; }
+          }
+        `}
+      </style>
     </div>
   );
 }
