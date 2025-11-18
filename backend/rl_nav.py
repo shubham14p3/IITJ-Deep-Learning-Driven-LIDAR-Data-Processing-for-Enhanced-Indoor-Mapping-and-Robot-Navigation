@@ -102,7 +102,6 @@ class SimpleRLAgent:
     def reset_from_occ(self, occ):
         self.state = self.env.load_from_occ(occ)
         return self.state
-
     def step(self, epsilon=0.2):
         st = torch.from_numpy(self.state).float().unsqueeze(0).to(self.device)
         with torch.no_grad():
