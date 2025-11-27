@@ -156,15 +156,19 @@ project-root/
 
 ### Segmentation Page
 ![Segmentation](assets/8.JPG)
+![Segmentation](assets/ 1.1.JPG)
 
 ### Occupancy Map
 ![Map](assets/9.JPG)
+![Map](assets/1.2.JPG)
 
 ### RL Navigation
 ![RL](assets/10.JPG)
+![RL](assets/1.3.JPG)
 
 ### Batch Processor
 ![Batch](assets/11.JPG)
+![Batch](assets/1.4.JPG)
 
 ### Explain Page
 ![Explain](assets/12.JPG)
